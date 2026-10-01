@@ -5,12 +5,13 @@
 >
 > 项目负责人 / 仓库管理员首次创建仓库后，请完成以下初始化：
 >
+> - [ ] 点击绿色按钮 `Code` -> `Clone using the web URL.` -> `git clone <仓库 URL>`，将仓库克隆到本地
 > - [ ] 填写本 README 中的项目基本信息、环境、构建与运行方式
 > - [ ] 填写 [`docs/plan.md`](docs/plan.md)，明确当前目标与下一步
 > - [ ] 确认默认分支为 `main`
-> - [ ] **公开仓库**：进入 `Settings → Rules → Rulesets → New ruleset → Import a ruleset`
-> - [ ] 导入 [`.github/rulesets/main-protection.json`](.github/rulesets/main-protection.json)
-> - [ ] 确认 Ruleset 已启用并作用于 `main`
+> - [ ] **公开仓库**：进入 `Settings → Rulesets → Rulesets → New ruleset → Import a ruleset`
+> - [ ] 导入克隆到本地仓库中的 [`.github/rulesets/main-protection.json`](.github/rulesets/main-protection.json)
+> - [ ] 加载后点击页面最下方的绿色按钮 `Create`，确认 Ruleset 已启用并作用于 `main`
 >
 > GitHub Free Organization 的 Rulesets 仅适用于公开仓库；若本仓库为私有仓库且 Settings 中没有 Rulesets 入口，跳过 Ruleset 导入即可
 >
