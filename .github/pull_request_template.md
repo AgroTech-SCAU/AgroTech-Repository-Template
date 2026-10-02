@@ -38,3 +38,4 @@ Closes #
 
 - 单人开发任务：由本人自行通过 `Merge without waiting for requirements to be met (bypass rules)` 完成合并
 - 多人协作任务：项目负责人(即仓库 Admin)的分支合并方式同上，非项目负责人则需要经过项目负责人的 review 后由项目负责人完成合并
+- Delete Branch：原则上 PR 合并后应删除分支，除非该分支仍有后续开发任务
