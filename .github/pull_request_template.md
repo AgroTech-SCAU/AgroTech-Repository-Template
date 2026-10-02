@@ -33,3 +33,8 @@ Closes #
 - [ ] 已完成当前项目阶段所需的基本验证
 - [ ] 相关 README / docs / 配置说明已同步（如需要）
 - [ ] 合并后不会破坏 `main` 的基本可用性
+
+## Merge 说明
+
+- 单人开发任务：由本人自行通过 `Merge without waiting for requirements to be met (bypass rules)` 完成合并
+- 多人协作任务：项目负责人(即仓库 Admin)的分支合并方式同上，非项目负责人则需要经过项目负责人的 review 后由项目负责人完成合并
