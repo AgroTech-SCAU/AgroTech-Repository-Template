@@ -1,19 +1,33 @@
+
 > [!IMPORTANT]
 > ## 仓库初始化
 >
 > 本仓库由 **AgroTech Repository Template** 创建
 >
-> 项目负责人 / 仓库管理员首次创建仓库后，请完成以下初始化，完成后请阅读 .github/CONTRIBUTING.md 和 .github/rulesets/README.md：
+> 项目负责人 / 仓库管理员首次创建仓库后，请完成以下初始化：
 >
 > - [ ] 点击绿色按钮 `Code` → `Clone using the web URL.` → `git clone <仓库 URL>`，将仓库克隆到本地
 > - [ ] 填写本 README 中的项目基本信息、环境、构建与运行方式
 > - [ ] 填写 [`docs/plan.md`](docs/plan.md)，明确当前目标与下一步
 > - [ ] 确认默认分支为 `main`
-> - [ ] **公开仓库**：进入 `Settings → Rulesets → Rulesets → New ruleset → Import a ruleset`
-> - [ ] 导入克隆到本地仓库中的 [`.github/rulesets/main-protection.json`](.github/rulesets/main-protection.json)
-> - [ ] 加载后点击页面最下方的绿色按钮 `Create`，确认 Ruleset 已启用并作用于 `main`
+> - [ ] 确认仓库已启用 Issues，并检查 `New issue` 页面可以看到仓库自带的 Issue Forms
+> - [ ] **公开仓库**：进入 `Settings → Rules → Rulesets → New ruleset → Import a ruleset`
+> - [ ] 导入 [`.github/rulesets/main-protection.json`](.github/rulesets/main-protection.json)，点击 `Create` 并确认规则已作用于 `main`
+> - [ ] 推荐：运行本仓库的一键 Git 设置脚本，开启本地防误操作提醒（可跳过；Ruleset 仍会保护 `main`）
 >
-> GitHub Free Organization 的 Rulesets 仅适用于公开仓库；若本仓库为私有仓库且 Settings 中没有 Rulesets 入口，跳过 Ruleset 导入即可
+> Linux / Ubuntu：
+>
+> ```bash
+> bash scripts/setup-git.sh
+> ```
+>
+> Windows PowerShell：
+>
+> ```powershell
+> .\scripts\setup-git.ps1
+> ```
+>
+> GitHub Free Organization 的 Repository Rulesets 对私有仓库的可用性取决于当前套餐；如果仓库设置中没有对应入口，以 GitHub 实际提供的功能为准
 >
 > **初始化全部完成后，请删除本段“仓库初始化”提示**
 
@@ -28,6 +42,21 @@
 - **当前开发计划：** [`docs/plan.md`](docs/plan.md)
 
 > 首次形成可复现的稳定版本后，再创建 Git Tag + GitHub Release，并将本 README 更新为该稳定版本的完整使用说明
+
+> [!IMPORTANT]
+> ## 参与本项目开发
+>
+> 推荐流程：
+>
+> **Issue → Branch → Commit → Push → Pull Request → 项目负责人 Merge**
+>
+> - 开始开发前，原则上先创建或认领 Issue
+> - 从 Issue 的 `Development` 区域创建任务分支，或从最新 `main` 手动创建分支
+> - 推荐分支名：`feat/xxx`、`fix/xxx`、`refactor/xxx`、`docs/xxx` 等；这是协作约定，不做硬性拦截
+> - 请勿直接在 `main` 开发或 Push
+> - 如果已经误在 `main` 上产生了有用 Commit，**不要先 `reset --hard`**，先按协作指南把提交保存到新分支
+>
+> 完整流程与常见问题：[`CONTRIBUTING.md`](.github/CONTRIBUTING.md)
 
 ## 1. 项目简介
 
@@ -89,12 +118,19 @@
 ├── README.md
 ├── docs/
 │   └── plan.md
-└── ...
+├── .github/
+│   ├── CONTRIBUTING.md
+│   ├── pull_request_template.md
+│   ├── ISSUE_TEMPLATE/
+│   └── rulesets/
+├── .githooks/          # 可选的本地防误操作提醒
+└── scripts/            # 一键启用本地 Git 设置
 ```
 
 ## 8. 文档
 
 - `docs/plan.md`：项目规划（必须）
+- `.github/CONTRIBUTING.md`：成员协作流程与误操作急救
 - `docs/architecture.md`：系统架构（如有）
 - `docs/interface.md`：接口说明（如有）
 - `docs/deployment.md`：部署说明（如有）
@@ -119,4 +155,4 @@
 
 ## 11. 维护者
 
-- Maintainer：`@GitHub-ID`
+- Maintainer / 项目负责人：`@GitHub-ID`

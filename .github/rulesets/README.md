@@ -1,3 +1,4 @@
+
 # Main 分支保护规则说明
 
 本目录用于存放 AgroTech 项目的 GitHub Rulesets 配置
@@ -8,94 +9,84 @@
 .github/rulesets/main-protection.json
 ```
 
-项目负责人创建仓库后，只需要在 GitHub 中导入该文件并启用即可，按照下方仓库初始化流程完成即可
+项目负责人创建仓库后，只需要导入一次该文件并启用即可
 
-> [!IMPORTANT]
-> ## 仓库初始化
->
-> 本仓库由 **AgroTech Repository Template** 创建
->
-> 项目负责人 / 仓库管理员首次创建仓库后，请完成以下初始化：
->
-> - [ ] 点击绿色按钮 `Code` → `Clone using the web URL.` → `git clone <仓库 URL>`，将仓库克隆到本地
-> - [ ] 填写本 README 中的项目基本信息、环境、构建与运行方式
-> - [ ] 填写 [`docs/plan.md`](docs/plan.md)，明确当前目标与下一步
-> - [ ] 确认默认分支为 `main`
-> - [ ] **公开仓库**：进入 `Settings → Rulesets → Rulesets → New ruleset → Import a ruleset`
-> - [ ] 导入克隆到本地仓库中的 [`.github/rulesets/main-protection.json`](.github/rulesets/main-protection.json)
-> - [ ] 加载后点击页面最下方的绿色按钮 `Create`，确认 Ruleset 已启用并作用于 `main`
->
-> GitHub Free Organization 的 Rulesets 仅适用于公开仓库；若本仓库为私有仓库且 Settings 中没有 Rulesets 入口，跳过 Ruleset 导入即可
->
+## 1. 当前规则做什么
 
-## 这套规则做什么
+`main-protection.json` 只保护 `main`：
 
-`main-protection.json` 只保护 `main` 分支，目标是让 `main` 始终作为稳定、可追溯的主分支
-
-启用后：
-
-- 禁止直接向 `main` Push
-- 禁止 Force Push
+- 禁止直接更新 `main`
 - 禁止删除 `main`
-- 所有修改必须先通过 Pull Request
-- 普通项目成员可以正常创建和 Push 开发分支、提交 PR
-- 只有 Repository Admin 可以最终把 PR 合并到 `main`
-- 不强制额外 Approval，不要求 CODEOWNERS
+- 禁止 Force Push
+- 所有修改必须通过 Pull Request
+- 普通成员可以正常创建 / Push 开发分支并提交 PR
+- Repository Admin 可以在 **Pull Request 场景**下完成最终合并
+- 基础模板不强制额外 Approval，也不要求 CODEOWNERS
 
-在协会项目中，Repository Admin 原则上对应项目负责人，因此可以理解为：
+协会项目通常约定：
+
+```text
+项目负责人 = Repository Admin
+项目成员   = Write
+```
+
+因此可以理解为：
 
 > 成员负责提交修改，项目负责人负责最终合并
 
-## 为什么不强制 Approval
+## 2. 为什么不强制 Approval
 
-协会中既有多人协作项目，也存在由负责人单独维护的项目
+协会既有多人项目，也有负责人单独维护的项目；如果基础模板统一要求至少 1 人 Approval，单人项目会被迫找其他人做形式审批
 
-如果统一要求至少 1 人 Approval，单人项目会出现负责人无法批准自己 PR、还需要额外找人形式审批的问题
-
-因此基础规则不设置强制审批人数，而是通过 `main` 的更新权限控制最终合并权
-
-这样：
-
-### 单人项目
+因此基础模板采用：
 
 ```text
-负责人开发分支
-    ↓
-提交 PR
-    ↓
-负责人检查 Diff
-    ↓
-负责人合并到 main
+必须 PR
++ 只有负责人能最终更新 main
++ 不强制额外 Approval
 ```
 
-### 多人项目
+成熟项目、高风险项目可以根据需要另外增加 Review、CODEOWNERS、CI 等要求
 
-```text
-成员开发分支
-    ↓
-提交 PR
-    ↓
-项目负责人检查
-    ↓
-项目负责人合并到 main
-```
+## 3. Repository Admin 为什么仍然不能直接 Push main
 
-两种情况使用同一套 Ruleset，不需要针对项目人数修改配置
-
-## 项目负责人为什么可以合并
-
-Ruleset 中预置了：
+Ruleset 的 bypass 为：
 
 ```text
 Repository Admin
-→ For pull requests only
+→ Allow for pull requests only
 ```
 
-也就是说，Repository Admin 可以在 Pull Request 场景下绕过 `Restrict updates`，从而完成合并；但不能因此直接绕过流程向 `main` Push
+负责人可以在 PR 场景下绕过 `Restrict updates` 完成合并，但不会因此获得直接 Push `main` 的正常通道
 
-> GitHub 在部分界面中可能显示“Merge without waiting for requirements to be met”或类似的绕过规则提示；这是 `Restrict updates + PR-only bypass` 的正常行为，不代表 Ruleset 配置失败
+GitHub 在负责人合并时可能显示“bypass rules”“Merge without waiting for requirements”等类似提示，这是正常行为
 
-## Push 被拒绝怎么办
+## 4. 正常协作流程
+
+```text
+Issue
+  ↓
+任务 Branch
+  ↓
+Commit + Push
+  ↓
+Pull Request
+  ↓
+项目负责人 Merge
+```
+
+推荐分支示例：
+
+```text
+feat/auto-navigation
+fix/pick-timeout
+refactor/arm-interface
+docs/deployment-flow
+```
+
+分支命名属于协作约定，基础模板不通过 Ruleset / CI 硬性限制
+
+## 5. Push main 被拒绝怎么办
 
 如果执行：
 
@@ -103,78 +94,78 @@ Repository Admin
 git push origin main
 ```
 
-GitHub 返回规则违规、受保护分支或 `GH013` 等提示，通常不是账号坏了，也不是仓库权限异常，而是 `main` 已启用保护
+GitHub 返回 `GH013`、protected branch、rule violation，或者 Git 本地提示 `fetch first / pull first / non-fast-forward`，不要先假设账号坏了
 
-正确做法是创建开发分支：
+### 情况 A：还没有 Commit
+
+直接创建任务 Branch：
+
+```bash
+git switch -c feat/your-work
+```
+
+再正常 Commit / Push
+
+### 情况 B：已经在 main 上 Commit，而且提交有用
+
+> [!CAUTION]
+> **先保存提交，不要先 `reset --hard`**
+
+```bash
+git switch -c feat/your-work
+git push -u origin HEAD
+```
+
+确认 GitHub 上已经看到新 Branch 与提交后，再恢复本地 `main`：
 
 ```bash
 git switch main
-git pull
-git switch -c feat/<功能名称>
+git fetch origin
+git reset --hard origin/main
 ```
 
-完成修改后：
+即使已经连续 Commit 多次，也可以用同样方法整体保留
+
+完整说明见 [`../CONTRIBUTING.md`](../CONTRIBUTING.md)
+
+## 6. 可选的本地防误操作提醒
+
+模板附带：
+
+```text
+.githooks/pre-commit
+.githooks/pre-push
+scripts/setup-git.sh
+scripts/setup-git.ps1
+```
+
+Git 不会在 Clone 后自动启用仓库自带 Hook，因此需要每份 Clone 主动运行一次 setup 脚本
+
+Linux / Ubuntu：
 
 ```bash
-git add .
-git commit -m "feat: 描述本次修改"
-git push -u origin feat/<功能名称>
+bash scripts/setup-git.sh
 ```
 
-然后在 GitHub 创建 Pull Request：
+Windows PowerShell：
 
-```text
-feat/<功能名称>
-        ↓
-       main
+```powershell
+.\scripts\setup-git.ps1
 ```
 
-完整成员协作流程见：
+Hook 只是为了更早提示，**不是安全边界**；即使成员完全没有启用 Hook，GitHub Ruleset 仍会保护 `main`
 
-```text
-.github/CONTRIBUTING.md
-```
-
-## 禁止对 main 使用 Force Push
-
-以下操作不得用于 `main`：
-
-```bash
-git push --force origin main
-git push -f origin main
-```
-
-Force Push 会重写 Git 历史，可能覆盖其他成员已经提交的内容，因此 Ruleset 会直接阻止该操作
-
-## 开发分支不受该规则限制
-
-当前 Ruleset 只匹配：
-
-```text
-refs/heads/main
-```
-
-因此以下开发分支仍可以正常 Push：
-
-```text
-feat/xxx
-fix/xxx
-docs/xxx
-refactor/xxx
-```
-
-## 初始化方式
+## 7. 初始化方式
 
 项目负责人创建公开项目仓库后：
 
-1. 将仓库 Clone 到本地
-2. 进入 GitHub 仓库 `Settings`
-3. 打开 `Rules → Rulesets`
-4. 选择 `New ruleset → Import a ruleset`
-5. 导入 `.github/rulesets/main-protection.json`
-6. 检查目标分支为 `main`
-7. 点击 `Create`
+1. 进入仓库 `Settings`
+2. 打开 `Rules → Rulesets`
+3. `New ruleset → Import a ruleset`
+4. 导入 `.github/rulesets/main-protection.json`
+5. 检查 Target 为 `main`
+6. 检查 Bypass 为 `Repository admin → Allow for pull requests only`
+7. 检查已启用 `Restrict updates`、`Restrict deletions`、`Require a pull request before merging`、`Block force pushes`
+8. 点击 `Create`
 
 完成后无需再额外配置审批人、CODEOWNERS 或第二套 Ruleset
-
-> 如果仓库当前套餐或可见性不支持 Repository Rulesets，请以 GitHub 实际提供的功能为准
