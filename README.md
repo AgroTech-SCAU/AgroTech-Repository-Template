@@ -3,7 +3,7 @@
 >
 > 本仓库由 **AgroTech Repository Template** 创建
 >
-> 项目负责人 / 仓库管理员首次创建仓库后，请完成以下初始化：
+> 项目负责人 / 仓库管理员首次创建仓库后，请完成以下初始化，完成后请阅读 .github/CONTRIBUTING.md 和 .github/rulesets/README.md：
 >
 > - [ ] 点击绿色按钮 `Code` → `Clone using the web URL.` → `git clone <仓库 URL>`，将仓库克隆到本地
 > - [ ] 填写本 README 中的项目基本信息、环境、构建与运行方式
