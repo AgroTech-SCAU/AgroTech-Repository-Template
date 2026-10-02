@@ -1,4 +1,4 @@
-$repoRoot = git rev-parse --show-toplevel 2>$null
+﻿$repoRoot = git rev-parse --show-toplevel 2>$null
 if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($repoRoot)) {
     Write-Error "[AgroTech] 当前目录不在 Git 仓库中"
     exit 1
