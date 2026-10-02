@@ -1,7 +1,7 @@
 
 name: "✨ 功能 / 改进"
 description: "新增能力、优化现有功能或提出明确的改进任务"
-title: "[Feature] "
+title: "[Feature] <请在此处输入简要描述>"
 body:
   - type: markdown
     attributes:

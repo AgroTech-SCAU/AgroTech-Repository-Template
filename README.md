@@ -11,7 +11,7 @@
 > - [ ] 填写 [`docs/plan.md`](docs/plan.md)，明确当前目标与下一步
 > - [ ] 确认默认分支为 `main`
 > - [ ] 确认仓库已启用 Issues，并检查 `New issue` 页面可以看到仓库自带的 Issue Forms
-> - [ ] **公开仓库**：进入 `Settings → Rules → Rulesets → New ruleset → Import a ruleset`
+> - [ ] **如果为 public 仓库，请导入规则集以保护 main 分支**：进入 `Settings → Rules → Rulesets → New ruleset → Import a ruleset`
 > - [ ] 导入 [`.github/rulesets/main-protection.json`](.github/rulesets/main-protection.json)，点击 `Create` 并确认规则已作用于 `main`
 > - [ ] 推荐：运行本仓库的一键 Git 设置脚本，开启本地防误操作提醒（可跳过；Ruleset 仍会保护 `main`）
 >

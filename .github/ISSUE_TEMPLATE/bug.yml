@@ -1,7 +1,7 @@
 
 name: "🐛 Bug / 异常"
 description: "记录可复现的问题、故障、异常行为或回归"
-title: "[Bug] "
+title: "[Bug] <请在此处输入简要描述>"
 body:
   - type: markdown
     attributes:
