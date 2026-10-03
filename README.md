@@ -51,7 +51,7 @@
 > **Issue → Branch → Commit → Push → Pull Request → 项目负责人 Merge**
 >
 > - 开始开发前，原则上先创建或认领 Issue
-> - 从 Issue 的 `Development` 区域创建任务分支，或从最新 `main` 手动创建分支
+> - 从 Issue 的 `Development` 区域创建任务分支并在 git 本地切换分支；或者在 git 本地里从最新 `main` 手动创建分支并推送后，在 Issue 的 `Development` 区域绑定分支
 > - 推荐分支名：`feat/xxx`、`fix/xxx`、`refactor/xxx`、`docs/xxx` 等；这是协作约定，不做硬性拦截
 > - 请勿直接在 `main` 开发或 Push
 > - 如果已经误在 `main` 上产生了有用 Commit，**不要先 `reset --hard`**，先按协作指南把提交保存到新分支

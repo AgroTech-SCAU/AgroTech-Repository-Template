@@ -52,8 +52,8 @@ body:
     attributes:
       value: |
         ### 创建后怎么开始开发
-        1. 在本 Issue 右侧找到 **Development**
-        2. 选择 **Create a branch**，建立 Issue 与 Branch 的关联
-        3. 推荐分支名：`feat/xxx` 或项目已有的领域前缀，例如 `adapter/xxx`、`sdk/xxx`
-        4. 在 Branch 上开发、Commit、Push，再创建 Pull Request
-        5. **不要直接在 `main` 开发**
+        1. 推荐流程：**Issue → Branch → Commit → Push → Pull Request → 项目负责人 Merge**
+        2. 从 Issue 的 `Development` 区域创建任务分支并在 git 本地切换分支；或者在 git 本地里从最新 `main` 手动创建分支并推送后，在 Issue 的 `Development` 区域绑定分支
+        3. 推荐分支名：`feat/xxx`；这是协作约定，不做硬性拦截
+        4. 请勿直接在 `main` 开发或 Push
+        5. 如果已经误在 `main` 上产生了有用 Commit，**不要先 `reset --hard`**，先按协作指南把提交保存到新分支
