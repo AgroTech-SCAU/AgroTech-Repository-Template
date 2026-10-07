@@ -23,7 +23,7 @@
 > Windows PowerShell：
 >
 > ```powershell
-> .\scripts\setup-git.ps1
+> .\setup-scripts\setup-git.ps1
 > ```
 >
 > GitHub Free Organization 的 Repository Rulesets 对私有仓库的可用性取决于当前套餐；如果仓库设置中没有对应入口，以 GitHub 实际提供的功能为准

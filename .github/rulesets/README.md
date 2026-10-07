@@ -150,7 +150,7 @@ bash setup-scripts/setup-git.sh
 Windows PowerShell：
 
 ```powershell
-.\scripts\setup-git.ps1
+.\setup-scripts\setup-git.ps1
 ```
 
 Hook 只是为了更早提示，**不是安全边界**；即使成员完全没有启用 Hook，GitHub Ruleset 仍会保护 `main`
