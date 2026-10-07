@@ -41,7 +41,7 @@ Linux / Ubuntu：
 ```bash
 git clone <仓库 URL>
 cd <仓库目录>
-bash scripts/setup-git.sh
+bash setup-scripts/setup-git.sh
 ```
 
 Windows PowerShell：
