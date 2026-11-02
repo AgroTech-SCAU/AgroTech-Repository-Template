@@ -11,6 +11,7 @@
 > - [ ] 填写 [`docs/plan.md`](docs/plan.md)，明确当前目标与下一步
 > - [ ] 确认默认分支为 `main`
 > - [ ] 确认仓库已启用 Issues，并检查 `New issue` 页面可以看到仓库自带的 Issue Forms
+> - [ ] 通过 Team 或直接协作者为开发成员开通 Write，确认所需邀请已接受、权限已生效
 > - [ ] **如果为 public 仓库，请导入规则集以保护 main 分支**：进入 `Settings → Rules → Rulesets → New ruleset → Import a ruleset`，导入 [`.github/rulesets/main-protection.json`](.github/rulesets/main-protection.json)，点击 `Create` 并确认规则已作用于 `main`
 > - [ ] 推荐：运行本仓库的一键 Git 设置脚本，开启本地防误操作提醒（可跳过；Ruleset 仍会保护 `main`）
 >
@@ -47,10 +48,11 @@
 >
 > 推荐流程：
 >
-> **Issue → Branch → Commit → Push → Pull Request → 项目负责人 Merge**
+> **Issue → 确认 Write → Branch → Commit → Push → Pull Request → 项目负责人 Merge**
 >
 > - 开始开发前，原则上先创建或认领 Issue
-> - 从 Issue 的 `Development` 区域创建任务分支并在 git 本地切换分支；或者在 git 本地里从最新 `main` 手动创建分支并推送后，在 Issue 的 `Development` 区域绑定分支
+> - 已有仓库写权限可直接继续；没有则联系负责人或管理员开通 Write，如有邀请先接受
+> - 权限生效后，从 Issue 的 `Development` 创建分支，或在本地建分支、推送后关联 Issue
 > - 推荐分支名：`feat/xxx`、`fix/xxx`、`refactor/xxx`、`docs/xxx` 等；这是协作约定，不做硬性拦截
 > - 请勿直接在 `main` 开发或 Push
 > - 如果已经误在 `main` 上产生了有用 Commit，**不要先 `reset --hard`**，先按协作指南把提交保存到新分支
