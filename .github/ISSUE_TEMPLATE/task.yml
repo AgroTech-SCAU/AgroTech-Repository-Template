@@ -36,8 +36,9 @@ body:
     attributes:
       value: |
         ### 如果本任务需要修改仓库
-        1. 推荐流程：**Issue → Branch → Commit → Push → Pull Request → 项目负责人 Merge**
-        2. 从 Issue 的 `Development` 区域创建任务分支并在 git 本地切换分支；或者在 git 本地里从最新 `main` 手动创建分支并推送后，在 Issue 的 `Development` 区域绑定分支
-        3. 推荐分支名：`refactor/xxx`、`docs/xxx` 等；这是协作约定，不做硬性拦截
-        4. 请勿直接在 `main` 开发或 Push
-        5. 如果已经误在 `main` 上产生了有用 Commit，**不要先 `reset --hard`**，先按协作指南把提交保存到新分支
+        1. 推荐流程：**Issue → 确认 Write → Branch → Commit → Push → Pull Request → 项目负责人 Merge**
+        2. 已有仓库写权限可直接继续；没有则联系负责人或管理员开通 Write，如有邀请先接受
+        3. 权限生效后，从 Issue 的 `Development` 创建分支，或在本地建分支、推送后关联 Issue
+        4. 推荐分支名：`refactor/xxx`、`docs/xxx` 等；这是协作约定，不做硬性拦截
+        5. 请勿直接在 `main` 开发或 Push
+        6. 如果已经误在 `main` 上产生了有用 Commit，**不要先 `reset --hard`**，先按协作指南把提交保存到新分支

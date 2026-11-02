@@ -1,6 +1,6 @@
 
 > [!IMPORTANT]
-> **AgroTech 协作流程：Issue → Branch → Commit → Push → Pull Request → 项目负责人 Merge**
+> **AgroTech 协作流程：Issue → 确认 Write → Branch → Commit → Push → Pull Request → 项目负责人 Merge**
 >
 > 请勿直接操作 `main`；分支命名遵循项目约定即可，基础模板不做硬性 CI 拦截
 
@@ -36,6 +36,6 @@ Closes #
 
 ## Merge 说明
 
-- 单人开发任务：由本人自行通过 `Merge without waiting for requirements to be met (bypass rules)` 完成合并
-- 多人协作任务：项目负责人(即仓库 Admin)的分支合并方式同上，非项目负责人则需要经过项目负责人的 review 后由项目负责人完成合并
+- 项目负责人检查后最终合并；普通成员提交 PR
+- 负责人自己的修改也走 Branch → PR → 检查 Diff → Merge
 - Delete Branch：原则上 PR 合并后应删除分支，除非该分支仍有后续开发任务

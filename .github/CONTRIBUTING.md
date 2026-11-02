@@ -9,6 +9,8 @@
 > ```text
 > 创建 / 认领 Issue
 >        ↓
+> 确认仓库 Write 已生效
+>        ↓
 > 创建任务 Branch
 >        ↓
 > 开发 + 小步 Commit
@@ -29,6 +31,8 @@
 | 项目负责人 | Admin | 管理仓库、检查 PR、最终合并到 `main` |
 | 项目成员 | Write | 开发、Push 开发分支、提交 PR |
 | 协助管理成员 | Triage / Maintain | 按项目需要协助 Issue / PR / 仓库维护 |
+
+写权限可通过 Team 或直接协作者授予；已有该仓库写权限者直接继续，无需重复申请
 
 基础模板不强制额外 Approval；某些高风险或成熟项目可以在此基础上追加 Review、CODEOWNERS、CI 等更严格规则
 
@@ -63,7 +67,8 @@ Bug、需求、功能、测试、文档或明确的工程任务，原则上先�
 1. 打开仓库 `Issues`
 2. 选择合适的 Issue Form：功能 / Bug / 一般任务
 3. 如果已有对应 Issue，直接认领 / 确认由你处理，不要重复创建
-4. 在 Issue 右侧 `Development` 区域选择 `Create a branch`，让 GitHub 自动建立 Issue 与 Branch 的关联
+4. 没有仓库写权限时，将 GitHub 用户名、仓库和 Issue 链接发给负责人或管理员申请 Write；如有邀请先接受，确认权限生效
+5. 在 Issue 右侧 `Development` 区域选择 `Create a branch`，让 GitHub 自动建立 Issue 与 Branch 的关联
 
 非常小的拼写修正等改动，可由项目负责人决定是否省略 Issue；不要为了流程本身制造无意义 Issue
 
@@ -107,7 +112,7 @@ test/can-parser
 
 > 分支命名是团队协作约定，不在基础模板中通过 CI / Ruleset 硬性拦截；核心要求是：**不要直接在 `main` 开发，一个分支只解决一个清晰主题**
 
-如果不从 Issue 页面创建分支，也可以手动：
+本地也可先建分支；推送到原仓库前仍须确认写权限已生效：
 
 ```bash
 git switch main
@@ -141,6 +146,8 @@ docs(flow): update deployment guide
 ```
 
 ## 6. Push 自己的 Branch
+
+任务分支 Push 提示权限不足时，先联系负责人或管理员确认 Write；普通 `git push` 无写权限时会被拒绝，不会自动 Fork。客户端若提示创建 Fork，协会内部开发先申请原仓库写权限
 
 第一次 Push：
 
@@ -307,6 +314,8 @@ git branch -d <分支名>
 
 ```text
 先有任务 / Issue
+      ↓
+确认仓库 Write 已生效
       ↓
 任务 Branch
       ↓
